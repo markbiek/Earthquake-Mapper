@@ -6,6 +6,13 @@ class EarthquakeList extends React.Component {
     constructor(props) {
         super(props);
 
+        this.feeds = {
+            hour: 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson',
+            day: 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson',
+            seven_days: 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson',
+            thirty_days: 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson' 
+        };
+
         this.state = {
             quakes: []
         };
@@ -21,6 +28,12 @@ class EarthquakeList extends React.Component {
         });
     }
 
+    timeframeChange(e) {
+        var select = e.nativeEvent.target;
+
+        console.log(select.options[select.selectedIndex].value);
+    }
+
     render() {
         let quakes = this.state.quakes;
 
@@ -28,6 +41,12 @@ class EarthquakeList extends React.Component {
             return (
                 <div className="earthquake-list">
                     <h2>Recent Earthquakes</h2>
+                    <select name="timeframe" onChange={this.timeframeChange.bind(this)}>
+                        <option value="hour">Past Hour</option>
+                        <option value="day">Past Day</option>
+                        <option value="seven_days">Past 7 Days</option>
+                        <option value="thirty_days">Past 30 Days</option>
+                    </select>
                     <div className="earthquakes">
                     {
                         quakes.map(quake => {
