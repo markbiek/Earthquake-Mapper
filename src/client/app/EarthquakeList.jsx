@@ -14,24 +14,37 @@ class EarthquakeList extends React.Component {
         };
 
         this.state = {
-            quakes: []
+            quakes: [],
+            meta: {},
+            feed: this.feeds.hour
         };
     }
 
     componentDidMount() {
-        var quakeFeed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
+        this.loadQuakes();
+    }
 
-        axios.get(quakeFeed).then(response => {
+    loadQuakes() {
+        console.log('loadQuakes: ' + this.state.feed);
+        axios.get(this.state.feed).then(response => {
             this.setState({
-                quakes: response.data.features
+                quakes: response.data.features,
+                meta: response.data.metadata,
+                feed: this.state.feed
             });
         });
     }
 
     timeframeChange(e) {
+        console.log('timeframeChange');
         var select = e.nativeEvent.target;
+        var state = this.state;
 
-        console.log(select.options[select.selectedIndex].value);
+        state.feed = this.feeds[select.options[select.selectedIndex].value];
+        console.log(state);
+        this.setState(state);
+
+        this.loadQuakes();
     }
 
     render() {
@@ -40,7 +53,9 @@ class EarthquakeList extends React.Component {
         if (quakes.length > 0) {
             return (
                 <div className="earthquake-list">
-                    <h2>Recent Earthquakes</h2>
+                    <h2>{this.state.meta.title}</h2>
+                    <p>Found {this.state.meta.count} earthquakes.</p>
+
                     <select name="timeframe" onChange={this.timeframeChange.bind(this)}>
                         <option value="hour">Past Hour</option>
                         <option value="day">Past Day</option>
