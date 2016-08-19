@@ -1,5 +1,6 @@
 import React from 'react';
 import EarthquakeMap from './EarthquakeMap.jsx';
+import MapLegend from './MapLegend.jsx';
 
 class Earthquake extends React.Component {
     constructor(props) {
@@ -8,9 +9,14 @@ class Earthquake extends React.Component {
 
     render() {
         return (
-            <div className="earthquake">
-                <h4>{this.props.title}</h4>
-                <EarthquakeMap lat={this.props.lat} lng={this.props.lng} mag={this.props.mag} />
+            <div className="earthquake panel panel-default">
+                <div className="panel-heading"><h3 className="panel-title">{this.props.title}</h3></div>
+                <div className="panel-body">
+                    <EarthquakeMap lat={this.props.lat} lng={this.props.lng} mag={this.props.mag} />
+                </div>
+                <div className="panel-footer">
+                    <MapLegend />
+                </div>
             </div>
         )
     }

@@ -98,26 +98,28 @@ class EarthquakeApp extends React.Component {
                 <h2>{this.state.meta.title}</h2>
                 <p>Found {this.state.meta.count} earthquakes.</p>
 
-                <div className="form-group">
-                    <label htmlFor="timeframe">Timeframe</label>
-                    <select id="timeframe" name="timeframe" onChange={this.filterResults.bind(this)} value={this.state.timeframe}>
-                        <option value="hour">Past Hour</option>
-                        <option value="day">Past Day</option>
-                        <option value="week">Past 7 Days</option>
-                        <option value="month">Past 30 Days</option>
-                    </select>
-                </div>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="timeframe">Timeframe</label>
+                        <select id="timeframe" name="timeframe" className="form-control" onChange={this.filterResults.bind(this)} value={this.state.timeframe}>
+                            <option value="hour">Past Hour</option>
+                            <option value="day">Past Day</option>
+                            <option value="week">Past 7 Days</option>
+                            <option value="month">Past 30 Days</option>
+                        </select>
+                    </div>
 
-                <div className="form-group">
-                    <label htmlFor="mag">Magnitude</label>
-                    <select id="mag" name="mag" onChange={this.filterResults.bind(this)} value={this.state.mag}>
-                        <option value="sig">Significant</option>
-                        <option value="m4">4.5+</option>
-                        <option value="m2">2.5+</option>
-                        <option value="m1">1.0+</option>
-                        <option value="all">All</option>
-                    </select>
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="mag">Magnitude</label>
+                        <select id="mag" name="mag" className="form-control" onChange={this.filterResults.bind(this)} value={this.state.mag}>
+                            <option value="sig">Significant</option>
+                            <option value="m4">4.5+</option>
+                            <option value="m2">2.5+</option>
+                            <option value="m1">1.0+</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                </form>
 
                 <EarthquakeList quakes={this.state.quakes} />
             </div>

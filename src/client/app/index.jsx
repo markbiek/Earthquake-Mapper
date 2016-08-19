@@ -7,8 +7,12 @@ require ('../../less/global.less');
 class App extends React.Component {
     render () {
         return (
-            <div>
-                <EarthquakeApp />
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8 col-md-offset-2">
+                        <EarthquakeApp />
+                    </div>
+                </div>
             </div>
         );
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import MapLegend from './MapLegend.jsx';
 
 class EarthquakeMap extends React.Component {
     constructor(props) {
@@ -29,8 +28,7 @@ class EarthquakeMap extends React.Component {
     render() {
         return (
             <div className="earthquake-map">
-                <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + this.props.lat + "," + this.props.lng + "&zoom=8&size=600x300&maptype=roadmap&markers=color:" + this.color + "%7Clabel:%7C" + this.props.lat + "," + this.props.lng + "&key=AIzaSyB8PWgrZKAwK3kaC6thP8VGmE72sBuClDs"} />
-                <MapLegend />
+                <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + this.props.lat + "," + this.props.lng + "&zoom=8&size=800x400&maptype=roadmap&markers=color:" + this.color + "%7Clabel:%7C" + this.props.lat + "," + this.props.lng + "&key=AIzaSyB8PWgrZKAwK3kaC6thP8VGmE72sBuClDs"} className="img-responsive" />
             </div>
         )
     }
