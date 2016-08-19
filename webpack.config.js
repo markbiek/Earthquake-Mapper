@@ -7,7 +7,7 @@ var APP_DIR = path.resolve(__dirname, 'src/client/app');
 var LESS_DIR = path.resolve(__dirname, 'src/less');
 
 var config = {
-    entry: APP_DIR + '/index.jsx',
+    entry: ['babel-polyfill', APP_DIR + '/index.jsx'],
     output: {
         path: BUILD_DIR,
         filename: 'bundle.js'
