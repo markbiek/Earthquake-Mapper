@@ -28,9 +28,7 @@ class EarthquakeList extends React.Component {
             )
         } else {
             return (
-                <div className="earthquakes">
-                    <h3>Loading...</h3>
-                </div>
+                <div className="earthquakes"> </div>
             )
         }
     }
