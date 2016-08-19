@@ -1,12 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-import EarthquakeList from './EarthquakeList.jsx';
+import EarthquakeApp from './EarthquakeApp.jsx';
 
 class App extends React.Component {
     render () {
         return (
             <div>
-                <EarthquakeList />
+                <EarthquakeApp />
             </div>
         );
     }
