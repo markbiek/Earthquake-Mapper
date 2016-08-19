@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
@@ -12,21 +13,22 @@ var config = {
         filename: 'bundle.js'
     },
     module: {
-        preLoaders: [
+        loaders: [
             {
                 test: /\.jsx?/,
                 include: APP_DIR,
                 loader: 'babel'
-            }
-        ],
-        loaders: [
+            },
             {
                 test: /\.less$/,
                 include: LESS_DIR,
-                loader: 'style!css!autoprefixer!less'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!less-loader')
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('global.css')
+    ]
 };
 
 module.exports = config;
