@@ -1,5 +1,28 @@
 class EarthquakeFeeds {
     constructor(props) {
+        this.testFeeds = {
+            hour: {
+                mag: {
+                    all: 'src/data/all_hour.geojson'
+                }
+            },
+            day: {
+                mag: {
+                    all: 'src/data/all_day.geojson'
+                }
+            },
+            week: {
+                mag: {
+                    all: 'src/data/all_week.geojson'
+                }
+            },
+            month: {
+                mag: {
+                    all: 'src/data/all_month.geojson'
+                }
+            }
+        };
+
         this.feeds = {
             hour: {
                 mag: {

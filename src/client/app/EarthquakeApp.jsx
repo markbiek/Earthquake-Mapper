@@ -9,6 +9,7 @@ class EarthquakeApp extends React.Component {
 
         let efeeds = new EarthquakeFeeds();
         this.feeds = efeeds.feeds;
+        //this.feeds = efeeds.testFeeds;
 
         this.state = {
             quakes: [],
